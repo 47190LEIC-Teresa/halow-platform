@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS simulation_metrics CASCADE;
+DROP TABLE IF EXISTS simulation_log CASCADE;
+DROP TABLE IF EXISTS simulation CASCADE;
+DROP TABLE IF EXISTS simulation_config CASCADE;
+DROP TABLE IF EXISTS app_user CASCADE;
+
+DROP TYPE IF EXISTS simulation_status_type CASCADE;
+DROP TYPE IF EXISTS log_status_type CASCADE;
