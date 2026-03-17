@@ -26,15 +26,10 @@ CREATE TABLE simulation_config (
     n_stations    INTEGER NOT NULL,
     width         INTEGER NOT NULL,
     height        INTEGER NOT NULL,
-    pE            TEXT,
-    pP            TEXT,
-    file_groups   TEXT,
     verbosity     INTEGER NOT NULL,
     sim_length    INTEGER NOT NULL,
     packet_rate   INTEGER NOT NULL,
-    slot_length   INTEGER NOT NULL,
-    mP            TEXT,
-    zipped_output BOOLEAN NOT NULL
+    slot_length   INTEGER NOT NULL
     );
 
 CREATE TABLE simulation (
@@ -42,12 +37,17 @@ CREATE TABLE simulation (
     username      VARCHAR(50) NOT NULL,
     config_id     BIGINT NOT NULL,
     status        simulation_status_type NOT NULL,
+    seed          INT,
     log_status    log_status_type NOT NULL,
-    error_msg     TEXT,
     created_at    TIMESTAMP NOT NULL,
     started_at    TIMESTAMP,
     finished_at   TIMESTAMP,
-    seed          BIGINT,
+    error_msg     TEXT,
+    pE            TEXT,
+    pP            TEXT,
+    file_groups   TEXT,
+    mP            TEXT,
+    zipped_output BOOLEAN NOT NULL,
 
     CONSTRAINT fk_simulation_user
         FOREIGN KEY (username)

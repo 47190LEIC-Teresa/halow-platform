@@ -18,7 +18,7 @@ fun runSimulator( params: SimulatorParams) {
     val pythonPath = File("../halowsimulator/venv/bin/python3").absoluteFile.path
 
     // Files storage location
-    val outputDir = File("output").absoluteFile
+    val outputDir = File("output/simple").absoluteFile
     val (simulationNumber, simulationDir) = createSimulationFolder(outputDir)
     val logFile = File(simulationDir, "log.txt")
 
@@ -45,5 +45,7 @@ fun runSimulator( params: SimulatorParams) {
 }
 
 fun main() {
-    runSimulator(SimulatorParams())
+    val params = SimulatorParams(mp= "mp.txt", verbosity = 4)
+    println("params: $params")
+    runSimulator(params)
 }
