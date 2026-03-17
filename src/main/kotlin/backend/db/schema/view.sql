@@ -11,6 +11,10 @@ FROM simulation
 ORDER BY id;
 
 SELECT *
+FROM simulation_file
+ORDER BY id;
+
+SELECT *
 FROM simulation_log
 ORDER BY id;
 

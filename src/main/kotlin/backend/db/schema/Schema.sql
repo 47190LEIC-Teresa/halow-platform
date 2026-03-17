@@ -15,9 +15,11 @@ CREATE TYPE log_status_type AS ENUM (
 
 CREATE TABLE app_user (
     username      VARCHAR(50) PRIMARY KEY,
+    password_hash VARCHAR(255) NOT NULL,
     email         VARCHAR(255) UNIQUE,
     first_name    VARCHAR(100),
-    last_name     VARCHAR(100)
+    last_name     VARCHAR(100),
+    last_access    TIMESTAMP
 );
 
 CREATE TABLE simulation_config (
@@ -43,10 +45,11 @@ CREATE TABLE simulation (
     started_at    TIMESTAMP,
     finished_at   TIMESTAMP,
     error_msg     TEXT,
-    pE            TEXT,
-    pP            TEXT,
-    file_groups   TEXT,
-    mP            TEXT,
+    w_pe          BOOLEAN NOT NULL,
+    w_pp          BOOLEAN NOT NULL,
+    w_group_file  BOOLEAN NOT NULL,
+    w_mp          BOOLEAN NOT NULL,
+    w_metrics     BOOLEAN NOT NULL,
     zipped_output BOOLEAN NOT NULL,
 
     CONSTRAINT fk_simulation_user
