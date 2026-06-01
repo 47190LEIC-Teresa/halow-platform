@@ -1,0 +1,25 @@
+.hero {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(20, 184, 166, 0.16));
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 24px;
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+.hero h3 {
+    margin: 0 0 12px;
+    font-size: 1.9rem;
+    max-width: 720px;
+}
+
+.hero-text {
+    max-width: 720px;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}

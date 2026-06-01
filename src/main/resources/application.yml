@@ -11,3 +11,21 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+jwt:
+  secret: k7J2mF9xQ3pR8vN1wY6tA0bC4dE5hG7i  # change in production ${JWT_SECRET}  # set as environment variable on your server
+  expiration: 86400000    # 24 hours in milliseconds
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    backend: DEBUG
+
+simulator:
+  python-path: /Users/tekas/Desktop/PS_HaLowSimulator/halowsimulator/venv/bin/python3
+  script-path: /Users/tekas/Desktop/PS_HaLowSimulator/halowsimulator/halowSimulator.py
