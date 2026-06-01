@@ -1,0 +1,88 @@
+@baseUrl = http://localhost:8080
+@token = {{token}}
+
+### Create simulation (multipart, no fileGroups)
+# @name createSimulation
+POST {{baseUrl}}/api/simulations
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: application/json
+
+--WebAppBoundary
+Content-Disposition: form-data; name="request"
+Content-Type: application/json
+
+{
+  "n": 10,
+  "g": 2,
+  "h": 100,
+  "w": 100,
+  "seed": 123,
+  "verbosity": 1,
+  "simLength": 1000,
+  "packetRate": 5,
+  "slotLength": 50,
+  "zippedOutput": false,
+  "pE": null,
+  "pP": null,
+  "mp": null,
+  "runSimParser": true,
+  "label": "idea-sim"
+}
+--WebAppBoundary--
+
+> {%
+    client.global.set("simulationId", response.body.simulationId);
+%}
+
+### Get all simulations from current user
+GET {{baseUrl}}/api/simulations
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get simulation by id
+GET {{baseUrl}}/api/simulations/{{simulationId}}
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get simulation config by id
+GET {{baseUrl}}/api/simulations/{{simulationId}}/config
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Rerun simulation
+POST {{baseUrl}}/api/simulations/{{simulationId}}/rerun
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create simulation batch (multipart, no fileGroups)
+POST {{baseUrl}}/api/simulations/batch
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=BatchBoundary
+Accept: application/json
+
+--BatchBoundary
+Content-Disposition: form-data; name="request"
+Content-Type: application/json
+
+{
+  "batchSize": 3,
+  "n": 10,
+  "g": 2,
+  "h": 100,
+  "w": 100,
+  "seedMin": 1,
+  "seedMax": 3,
+  "randomSeed": false,
+  "verbosity": 1,
+  "simLength": 1000,
+  "packetRate": 5,
+  "slotLength": 50,
+  "zippedOutput": false,
+  "pE": null,
+  "pP": null,
+  "mp": null,
+  "runSimParser": true,
+  "label": "idea-batch"
+}
+--BatchBoundary--

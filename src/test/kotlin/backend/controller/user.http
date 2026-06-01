@@ -1,0 +1,18 @@
+@baseUrl = http://localhost:8080
+@token = {{token}}
+
+### Get current user
+GET {{baseUrl}}/api/user
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Update current user
+PATCH {{baseUrl}}/api/user
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Updated",
+  "lastName": "User"
+}

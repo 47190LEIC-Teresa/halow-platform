@@ -1,0 +1,109 @@
+.global-alert {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    width: min(420px, calc(100vw - 2rem));
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(6px);
+    animation: global-alert-in 180ms ease-out;
+}
+
+.global-alert--error {
+    background: #bda2a2;
+    color: #5d1a22;
+    border-left: 4px solid #6e1f2d;
+}
+
+.global-alert--warning {
+    background: #fff8e8;
+    color: #5c4700;
+    border-left: 4px solid #d19900;
+}
+
+.global-alert--success {
+    background: #eef8ea;
+    color: #244312;
+    border-left: 4px solid #437a22;
+}
+
+.global-alert--info {
+    background: #edf6fb;
+    color: #143c53;
+    border-left: 4px solid #006494;
+}
+
+.global-alert__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-right: 2rem;
+}
+
+.global-alert__content strong {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.global-alert__content p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+}
+
+.global-alert__code {
+    font-size: 0.78rem;
+    opacity: 0.8;
+    font-family: monospace;
+}
+
+.global-alert__close {
+    position: absolute;
+    top: -0.1rem;
+    right: -0.2rem;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.75;
+    padding: 0.15rem 0.3rem;
+    border-radius: 6px;
+}
+
+.global-alert__close:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.global-alert__close:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+@keyframes global-alert-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) translateX(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .global-alert {
+        top: 0.75rem;
+        left: 0.75rem;
+        right: 0.75rem;
+        width: auto;
+    }
+}

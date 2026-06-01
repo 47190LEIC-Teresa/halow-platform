@@ -1,0 +1,102 @@
+.stat-card {
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.stat-card span {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.stat-card strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 2rem;
+}
+
+.stat-card p {
+    color: #94a3b8;
+    margin: 6px 0 0;
+}
+
+.sim-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.sim-table th {
+    text-align: left;
+    padding: 10px 14px;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.sim-table td {
+    padding: 12px 14px;
+    color: #cbd5e1;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.sim-table tr:hover {
+    background: rgba(59, 130, 246, 0.06);
+}
+
+.status-completed {
+    color: #6ee7b7;
+}
+
+.status-running {
+    color: #60a5fa;
+}
+
+.status-queued {
+    color: #fbbf24;
+}
+
+.status-failed {
+    color: #fca5a5;
+}
+
+.status-aborted {
+    color: #94a3b8;
+}
+
+.status-badge {
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.empty-state-box {
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 2px dashed rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.empty-state-box h4 {
+    margin: 0 0 0.5rem;
+    color: #e5e7eb;
+}
+
+.empty-state-box p {
+    margin: 0 0 1.5rem;
+    color: #94a3b8;
+}
+
+.view-link {
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+.view-link:hover {
+    color: #93bbfd;
+}

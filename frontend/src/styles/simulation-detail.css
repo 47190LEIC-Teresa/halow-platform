@@ -1,0 +1,125 @@
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.detail-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    margin-bottom: 24px;
+}
+
+.detail-summary strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.detail-summary p {
+    color: #94a3b8;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 24px;
+}
+
+.detail-card {
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 24px;
+}
+
+.file-expiry-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.file-expiry-badge.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.file-expiry-badge.expired {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.detail-error-card p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+}
+
+.detail-error-card,
+.detail-warning-card {
+    margin: 1rem 0;
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.detail-error-card {
+    margin-bottom: 24px;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    border: 1px solid #9227279e;
+    background: #9227279e;
+}
+
+.detail-error-card strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+}
+
+.detail-error-card p {
+    margin: 0;
+}
+
+.detail-warning-card {
+    background: #a6562f;
+    color: white;
+    border-color: #a6562f;
+}
+
+.detail-warning-card strong {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.detail-warning-card p {
+    margin: 0;
+}
+
+.detail-warning-card span {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+@media (max-width: 960px) {
+    .detail-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}

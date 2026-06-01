@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: app-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hallowdb
+      POSTGRES_USER: hallowuser
+      POSTGRES_PASSWORD: halowpass
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hallowuser -d hallowdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/hallowdb
+      SPRING_DATASOURCE_USERNAME: hallowuser
+      SPRING_DATASOURCE_PASSWORD: halowpass
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      SIMULATOR_PYTHON_PATH: ${SIMULATOR_PYTHON_PATH}
+      SIMULATOR_SCRIPT_PATH: ${SIMULATOR_SCRIPT_PATH}
+      SIMULATOR_PARSER_PATH: ${SIMULATOR_PARSER_PATH}
+      SERVER_PORT: ${SERVER_PORT}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend-data/tmp:/app/tmp
+      - ${SIMULATOR_HOST_DIR}:/simulator
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: app-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  postgres-data:
