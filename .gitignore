@@ -1,0 +1,7 @@
+.DS_Store
+.gradle/
+.idea/
+build/
+frontend/dist/
+frontend/node_modules/
+*.iml
