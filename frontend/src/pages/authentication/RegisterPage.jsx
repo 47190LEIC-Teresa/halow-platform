@@ -93,6 +93,8 @@ export default function RegisterPage() {
                         value={form.firstName}
                         onChange={(e) => updateField("firstName", e.target.value)}
                         required
+                        minLength={3}
+                        title="First name must be at least 3 characters long"
                     />
 
                     <label>Last name</label>
@@ -100,6 +102,8 @@ export default function RegisterPage() {
                         value={form.lastName}
                         onChange={(e) => updateField("lastName", e.target.value)}
                         required
+                        minLength={3}
+                        title="Last name must be at least 3 characters long"
                     />
 
                     <label>Password</label>

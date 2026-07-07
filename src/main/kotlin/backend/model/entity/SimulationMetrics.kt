@@ -18,7 +18,7 @@ class SimulationMetrics(
     var id: Long? = null,
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "simulation_id")
+    @JoinColumn(name = "simulation_id", nullable = false, unique = true)
     var simulation: Simulation,
 
     // Application layer

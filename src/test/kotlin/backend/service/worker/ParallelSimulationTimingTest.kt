@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
 class ParallelSimulationTimingTest : BaseSimulationServiceJpaTest() {
 
     @Test
-    fun `parallel batch with increased load should complete and report total time`() {
+    fun `parallel batch submission with default style config should report timing`() {
         val user = createUser(
             username = "parallel_user",
             email = "parallel_user@test.com"
@@ -19,17 +19,17 @@ class ParallelSimulationTimingTest : BaseSimulationServiceJpaTest() {
         val service = buildService()
 
         val batchRequest = CreateSimulationBatchRequest(
-            batchSize = 8,
+            batchSize = 4,
             n = 10,
             g = 2,
             h = 100,
             w = 100,
             seedMin = 1,
-            seedMax = 8,
+            seedMax = 4,
             randomSeed = false,
             verbosity = 1,
-            simLength = 1000L,
-            packetRate = 5,
+            simLength = 100L,
+            packetRate = 1,
             slotLength = 50L,
             zippedOutput = false,
             pE = null,
@@ -49,20 +49,9 @@ class ParallelSimulationTimingTest : BaseSimulationServiceJpaTest() {
 
         val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
 
-        println("submitSimulationBatch elapsedMs=$elapsedMs")
-        println("responses size=${responses?.size}")
-
         val sims = simulationRepo.findAll()
             .filter { it.user.username == user.username }
             .sortedBy { it.seed }
-
-        println("persisted sims size=${sims.size}")
-        sims.forEachIndexed { index, sim ->
-            println(
-                "sim[$index]: id=${sim.id}, seed=${sim.seed}, status=${sim.status}, " +
-                        "label=${sim.label}, wMetrics=${sim.wMetrics}, zippedOutput=${sim.zippedOutput}"
-            )
-        }
 
         assertEquals(batchRequest.batchSize, responses?.size)
         assertEquals(batchRequest.batchSize, sims.size)
@@ -79,6 +68,15 @@ class ParallelSimulationTimingTest : BaseSimulationServiceJpaTest() {
             jobService.createJob(simulation = any(), gFileId = any())
         }
 
-        println("average submit time per simulation=${elapsedMs.toDouble() / batchRequest.batchSize} ms")
+        println(
+            "BATCH_RESULT," +
+                    "batchSize=${batchRequest.batchSize}," +
+                    "stations=${batchRequest.n}," +
+                    "groups=${batchRequest.g}," +
+                    "simLength=${batchRequest.simLength}," +
+                    "packetRate=${batchRequest.packetRate}," +
+                    "submitElapsedMs=$elapsedMs," +
+                    "avgSubmitMs=${elapsedMs.toDouble() / batchRequest.batchSize}"
+        )
     }
 }

@@ -21,7 +21,7 @@ export default function MetricsUploadCard({
                     id="metrics-file-input"
                     className="file-input-hidden"
                     type="file"
-                    accept=".txt,text/plain"
+                    accept=".zip,application/zip,application/x-zip-compressed"
                     onChange={onFileChange}
                 />
 

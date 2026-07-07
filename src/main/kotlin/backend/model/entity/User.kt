@@ -24,10 +24,10 @@ class User(
     @Column(name = "email", columnDefinition = "varchar(255) CHECK (char_length(email) >= 3)",  unique = true)
     var email: String? = null,
 
-    @Column(name = "first_name", columnDefinition = "varchar(255) CHECK (char_length(email) >= 3)", nullable = false)
+    @Column(name = "first_name", columnDefinition = "varchar(255) CHECK (char_length(first_name) >= 3)", nullable = false)
     var firstName: String,
 
-    @Column(name = "last_name", columnDefinition = "varchar(255) CHECK (char_length(email) >= 3)", nullable = false)
+    @Column(name = "last_name", columnDefinition = "varchar(255) CHECK (char_length(last_name) >= 3)", nullable = false)
     var lastName: String,
 
     @Column(name = "last_access")

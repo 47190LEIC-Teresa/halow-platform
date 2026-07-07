@@ -90,9 +90,9 @@ export default function SimulationFilters({
                 >
                     <option value="ALL">All Statuses</option>
                     <option value="COMPLETED">Completed</option>
-                    <option value="RUNNING">Running</option>
-                    <option value="QUEUED">Queued</option>
                     <option value="FAILED">Failed</option>
+                    <option value="RUNNING">Running</option>
+                    <option value="CREATED">Created</option>
                 </select>
             </div>
         </div>
