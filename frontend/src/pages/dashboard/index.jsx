@@ -1,41 +1,13 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+import { useDashboardPage } from "./useDashboardPage";
 
 export default function DashboardPage() {
-    const [user, setUser] = useState(null);
-    const [stats, setStats] = useState({ total: 0, running: 0, completed: 0 });
-    const [recentSims, setRecentSims] = useState([]);
-
     const { authFetch, token } = useAuth();
-
-    useEffect(() => {
-        authFetch("/api/user", token)
-            .then((res) => {
-                if (!res.ok) throw new Error("Failed to load user");
-                return res.json();
-            })
-            .then(setUser)
-            .catch(() => setUser(null));
-    }, [authFetch, token]);
-
-    useEffect(() => {
-        authFetch("/api/simulations", token)
-            .then((res) => res.json())
-            .then((sims) => {
-                setStats({
-                    total: sims.length,
-                    running: sims.filter((s) => s.status === "RUNNING").length,
-                    completed: sims.filter((s) => s.status === "COMPLETED").length,
-                });
-                setRecentSims(sims.slice(-5).reverse());
-            })
-            .catch(() => {});
-    }, [authFetch, token]);
+    const { user, stats, recentSims } = useDashboardPage(authFetch, token);
 
     return (
         <>
-
             <div>
                 <p className="eyebrow">Overview</p>
                 <h2>Welcome{user ? `, ${user.firstName}` : ""}</h2>

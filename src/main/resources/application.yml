@@ -46,3 +46,4 @@ simulator:
   python-path: ${SIMULATOR_PYTHON_PATH}
   script-path: ${SIMULATOR_SCRIPT_PATH}
   parser-path: ${SIMULATOR_PARSER_PATH}
+  worker-threads: ${SIMULATOR_WORKER_THREADS:2}

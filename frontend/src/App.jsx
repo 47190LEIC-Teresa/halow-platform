@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { AlertProvider, useAlert } from "./context/AlertContext";
 
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./pages/dashboard";
 import LoginPage from "./pages/authentication/LoginPage";
 import RegisterPage from "./pages/authentication/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
